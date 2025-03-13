@@ -19,7 +19,6 @@ export default function ChatImageButton({
     try {
       if (event.target.files?.length) {
         const file = event.target.files[0];
-
         const formData = new FormData();
         formData.append('file', file);
 
@@ -28,8 +27,10 @@ export default function ChatImageButton({
           body: formData,
         });
         const data = await response.json();
-        onUpload(data.data);
 
+        if (data.data) {
+          onUpload(data.data);
+        }
         setInputKey((prev) => prev + 1);
       }
     } catch (error) {
