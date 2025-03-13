@@ -22,15 +22,16 @@ const styles = {
   },
   message: {
     borderRadius: 2,
+    overflow: 'hidden',
     display: 'flex',
     flexDirection: 'column',
     color: 'text.primary',
     boxShadow: (theme: Theme) =>
       theme.palette.mode === 'light'
-        ? `0 0 10px 0 ${theme.palette.grey[200]}`
-        : `0 0 10px 0 ${theme.palette.grey[900]}`,
+        ? `0 0 5px 0 ${theme.palette.grey[300]}`
+        : `0 0 5px 0 ${theme.palette.grey[900]}`,
     bgcolor: (theme: Theme) =>
-      theme.palette.mode === 'light' ? 'grey.50' : 'grey.900',
+      theme.palette.mode === 'light' ? 'grey.100' : 'grey.900',
   },
   messageMe: {
     bgcolor: 'primary.main',
