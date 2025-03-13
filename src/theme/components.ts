@@ -10,6 +10,8 @@ const components: Components = {
       body: {
         height: '100%',
         width: '100%',
+        fontFamily:
+          '"Noto Sans TC", "Noto Sans", "Helvetica", "Arial", sans-serif',
       },
       '#__next': {
         height: '100%',

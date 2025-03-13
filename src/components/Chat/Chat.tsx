@@ -52,6 +52,11 @@ const styles = {
     bottom: 0,
     display: 'flex',
     flexDirection: 'column-reverse',
+    scrollbarWidth: 'thin',
+    scrollbarColor: (theme: Theme) =>
+      theme.palette.mode === 'light'
+        ? `${theme.palette.grey[300]} ${theme.palette.grey[50]}`
+        : `${theme.palette.grey[700]} ${theme.palette.grey[900]}`,
   },
   action: {
     borderTop: '1px solid',

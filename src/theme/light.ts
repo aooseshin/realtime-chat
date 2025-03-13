@@ -5,6 +5,9 @@ const theme = createTheme({
   palette: {
     mode: 'light',
   },
+  typography: {
+    fontFamily: '"Noto Sans TC", "Noto Sans", "Helvetica", "Arial", sans-serif',
+  },
   components,
 });
 

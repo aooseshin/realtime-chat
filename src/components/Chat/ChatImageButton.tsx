@@ -1,4 +1,4 @@
-import { Box, IconButton } from '@mui/material';
+import { Box, IconButton, Snackbar } from '@mui/material';
 import { useRef, useState } from 'react';
 import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
 
@@ -8,8 +8,10 @@ export default function ChatImageButton({
   onUpload: (url: string) => void;
 }) {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
   const [inputKey, setInputKey] = useState(0);
   const handleClick = () => {
+    if (isLoading) return;
     fileInputRef.current?.click();
   };
 
@@ -17,6 +19,7 @@ export default function ChatImageButton({
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     try {
+      setIsLoading(true);
       if (event.target.files?.length) {
         const file = event.target.files[0];
         const formData = new FormData();
@@ -35,6 +38,8 @@ export default function ChatImageButton({
       }
     } catch (error) {
       console.error('上傳圖片失敗', error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -48,7 +53,14 @@ export default function ChatImageButton({
         type="file"
         ref={fileInputRef}
         style={{ display: 'none' }}
+        disabled={isLoading}
         onChange={handleFileChange}
+        accept="image/*"
+      />
+      <Snackbar
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+        open={isLoading}
+        message="圖片上傳中..."
       />
     </Box>
   );

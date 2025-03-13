@@ -22,6 +22,11 @@ const styles = {
     borderRight: '1px solid',
     borderColor: (theme: Theme) =>
       theme.palette.mode === 'light' ? 'grey.200' : 'grey.800',
+    scrollbarWidth: 'thin',
+    scrollbarColor: (theme: Theme) =>
+      theme.palette.mode === 'light'
+        ? `${theme.palette.grey[300]} ${theme.palette.grey[50]}`
+        : `${theme.palette.grey[700]} ${theme.palette.grey[900]}`,
   },
   cards: {
     display: 'flex',
