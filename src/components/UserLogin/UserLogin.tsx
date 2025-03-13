@@ -88,7 +88,7 @@ export default function UserLogin() {
       maxWidth="xs"
       open
     >
-      <Typography variant="h6">請選擇要登入的使用者</Typography>
+      <Typography variant="h6">Please select a user to login</Typography>
       <Box sx={styles.users}>
         {data?.data.map((user) => (
           <ButtonBase
@@ -101,11 +101,11 @@ export default function UserLogin() {
           </ButtonBase>
         ))}
       </Box>
-      <Divider sx={styles.divider}>或是建立新的使用者</Divider>
+      <Divider sx={styles.divider}>or create a new user</Divider>
       <Box sx={styles.field}>
         <InputBase
           sx={styles.input}
-          placeholder="使用者名稱"
+          placeholder="User name"
           value={name}
           onChange={(e) => setName(e.target.value)}
           onKeyDown={(e) => {
@@ -120,7 +120,7 @@ export default function UserLogin() {
           disabled={loading || !name}
           onClick={handleCreateAccount}
         >
-          建立
+          Create
         </Button>
       </Box>
     </Dialog>

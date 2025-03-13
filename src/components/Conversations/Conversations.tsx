@@ -104,7 +104,7 @@ export default function Conversations({ id }: { id?: number }) {
       <Box sx={styles.root}>
         <Box sx={styles.header}>
           <Typography variant="h4" fontWeight={700}>
-            對話
+            Conversations
           </Typography>
         </Box>
         <Box sx={styles.cards}>
@@ -119,7 +119,7 @@ export default function Conversations({ id }: { id?: number }) {
     <Box sx={styles.root}>
       <Box sx={styles.header}>
         <Typography variant="h5" fontWeight={700}>
-          對話
+          Conversations
         </Typography>
       </Box>
       <Box sx={styles.cards}>
@@ -147,7 +147,12 @@ export default function Conversations({ id }: { id?: number }) {
                 <Box ml="auto">
                   {!conversation.participants.some(
                     (participant) => participant.userId === user?.id
-                  ) && <Chip label="你尚未加入此對話" size="small" />}
+                  ) && (
+                    <Chip
+                      label="You are not in this conversation"
+                      size="small"
+                    />
+                  )}
                 </Box>
               </Box>
               <Typography variant="body2" color="text.primary">

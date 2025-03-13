@@ -31,7 +31,9 @@ export default async function handler(
         `;
 
       if (!data.length) {
-        return res.status(404).json({ message: 'Conversation not found' });
+        return res
+          .status(404)
+          .json({ message: 'The conversation does not exist' });
       }
 
       res.status(200).json({ data: data[0] });

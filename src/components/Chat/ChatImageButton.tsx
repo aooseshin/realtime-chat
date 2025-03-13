@@ -1,6 +1,7 @@
-import { Box, IconButton, Snackbar } from '@mui/material';
+import { Box, IconButton } from '@mui/material';
 import { useRef, useState } from 'react';
 import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
+import { toast } from '../Toaster';
 
 export default function ChatImageButton({
   onUpload,
@@ -20,6 +21,9 @@ export default function ChatImageButton({
   ) => {
     try {
       setIsLoading(true);
+      toast.open({
+        message: 'Uploading image...',
+      });
       if (event.target.files?.length) {
         const file = event.target.files[0];
         const formData = new FormData();
@@ -37,9 +41,14 @@ export default function ChatImageButton({
         setInputKey((prev) => prev + 1);
       }
     } catch (error) {
-      console.error('上傳圖片失敗', error);
+      console.error('Upload image failed', error);
+      toast.open({
+        message: 'Upload image failed',
+        variant: 'error',
+      });
     } finally {
       setIsLoading(false);
+      toast.close();
     }
   };
 
@@ -56,11 +65,6 @@ export default function ChatImageButton({
         disabled={isLoading}
         onChange={handleFileChange}
         accept="image/*"
-      />
-      <Snackbar
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-        open={isLoading}
-        message="圖片上傳中..."
       />
     </Box>
   );

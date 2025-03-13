@@ -28,7 +28,9 @@ export default async function handler(
       const conversation = conversations[0];
 
       if (!conversation) {
-        return res.status(404).json({ message: 'Conversation not found' });
+        return res
+          .status(404)
+          .json({ message: 'The conversation does not exist' });
       }
 
       const joinConversation = await sql`
@@ -56,7 +58,7 @@ export default async function handler(
       `;
 
       if (messages.length === 0) {
-        return res.status(400).json({ message: 'Failed to create message' });
+        return res.status(400).json({ message: 'Failed to add message' });
       }
 
       res.status(200).json({

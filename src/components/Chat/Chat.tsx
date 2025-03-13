@@ -95,7 +95,7 @@ export default function Chat({ id }: { id: number }) {
 
   const { data: conversationData } = useConversation(id);
   const { data: messagesData, mutate: mutateMessages } = useMessages(id, {
-    refreshInterval: isUpdatingReaction ? 0 : 3000,
+    refreshInterval: isUpdatingReaction ? 0 : 3000, // 在更新 reaction 期間先暫停 call message api 以免 reaction 狀態被洗掉
   });
 
   const title = conversationData?.data?.participants
@@ -139,6 +139,8 @@ export default function Chat({ id }: { id: number }) {
   ) => {
     if (!user || !messagesData) return;
     setIsUpdatingReaction(true);
+
+    // 為了更好的 UX，這邊不等待 API，先更新 Reaction 狀態
     mutateMessages(
       {
         data: messagesData.data.map((message) => {

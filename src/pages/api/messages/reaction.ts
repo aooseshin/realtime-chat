@@ -16,7 +16,7 @@ export default async function handler(
 
       if (!messageId || !reactionType || !userId) {
         return res.status(400).json({
-          message: 'Message ID, Reaction Type, and User ID are required',
+          message: 'Message ID, Reaction Type, User ID are required',
         });
       }
 
@@ -35,7 +35,7 @@ export default async function handler(
         `;
       }
 
-      res.status(200).json({ data: 'success' });
+      res.status(200).json({ data: 'Success' });
       break;
     }
     default:

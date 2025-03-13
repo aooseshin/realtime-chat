@@ -14,7 +14,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method !== 'POST') {
-    return res.status(405).json({ message: 'Method Not Allowed' });
+    return res.status(405).json({ message: 'Method not allowed' });
   }
 
   const form = formidable({ multiples: false });
@@ -23,7 +23,7 @@ export default async function handler(
     const file = files.file?.[0];
 
     if (!file) {
-      return res.status(400).json({ message: '未找到文件' });
+      return res.status(400).json({ message: 'File not found' });
     }
     const fileData = await fs.readFile(file.filepath);
 
@@ -33,7 +33,7 @@ export default async function handler(
 
     return res.status(200).json({ data: blob.url });
   } catch (error) {
-    console.error('文件上傳失敗', error);
-    return res.status(500).json({ message: '文件上傳失敗' });
+    console.error('File upload failed', error);
+    return res.status(500).json({ message: 'File upload failed' });
   }
 }

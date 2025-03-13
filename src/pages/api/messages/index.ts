@@ -40,10 +40,10 @@ export default async function handler(
             ), '{}'::jsonb) AS "reactions",
             COALESCE((
                 SELECT jsonb_object_agg(
-                    t.reaction_type, COALESCE(r.user_ids, '{}')  -- 若無資料則回傳空陣列
+                    t.reaction_type, COALESCE(r.user_ids, '{}')
                 )
                 FROM (
-                    VALUES ('like'), ('love'), ('laugh')  -- 先定義所有 reactionType
+                    VALUES ('like'), ('love'), ('laugh')
                 ) AS t(reaction_type)
                 LEFT JOIN (
                     SELECT 

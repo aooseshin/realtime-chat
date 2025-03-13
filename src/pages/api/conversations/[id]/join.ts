@@ -28,7 +28,9 @@ export default async function handler(
       const conversation = conversations[0];
 
       if (!conversation) {
-        return res.status(404).json({ message: 'Conversation not found' });
+        return res
+          .status(404)
+          .json({ message: 'The conversation does not exist' });
       }
 
       const joinConversation = await sql`

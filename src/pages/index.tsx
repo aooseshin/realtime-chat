@@ -31,7 +31,9 @@ export default function Home() {
       <Conversations />
       <Box sx={styles.main}>
         <Header />
-        <Box sx={styles.empty}>請選擇一個對話，開始聊天吧！</Box>
+        <Box sx={styles.empty}>
+          Please select a conversation to start chatting!
+        </Box>
       </Box>
       <UserLogin />
     </Box>

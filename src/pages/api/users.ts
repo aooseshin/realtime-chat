@@ -47,7 +47,7 @@ export default async function handler(
           DELETE FROM users 
           WHERE id = ${id};
         `;
-      res.status(200).json({ data: 'success' });
+      res.status(200).json({ data: 'Success' });
       break;
     }
     default:

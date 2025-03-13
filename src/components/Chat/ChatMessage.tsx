@@ -42,6 +42,7 @@ const styles = {
     maxWidth: '90%',
     mx: 'auto',
     my: 1,
+    lineHeight: 1,
     color: 'text.secondary',
     bgcolor: (theme: Theme) =>
       theme.palette.mode === 'light' ? 'grey.50' : 'grey.800',
@@ -95,12 +96,10 @@ export default function ChatMessage({
               {formatTimestamp(Number(message.timestamp))}
             </Typography>
           </Box>
-          <Box>
-            <ChatReaction
-              data={message.reactionUsers}
-              onEmojiClick={(emoji) => onEmojiClick(emoji, message.id)}
-            />
-          </Box>
+          <ChatReaction
+            data={message.reactionUsers}
+            onEmojiClick={(emoji) => onEmojiClick(emoji, message.id)}
+          />
         </Box>
       </Box>
     </Box>
