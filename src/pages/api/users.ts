@@ -30,7 +30,7 @@ export default async function handler(
     }
     case 'POST': {
       const { name } = req.body;
-      console.log(name, req.body);
+
       const lastUserId = await getLastUserId();
       const avatar = `https://i.pravatar.cc/150?img=${lastUserId + 1}`;
       const data = await sql`
